@@ -16,7 +16,7 @@ then
 fi
 
 #unmount /var/log.hdd so logic below can find the root partition
-umount /var/log.hdd
+#umount /var/log.hdd
 
 runfrom=$(lsblk | grep /$ | grep -oE '(mmcblk[0-9]|sda[0-9])')
 if [ "$runfrom" = "" ]
