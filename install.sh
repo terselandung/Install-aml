@@ -12,7 +12,11 @@ avail=$(lsblk | grep -oE '(mmcblk[0-9]|sda[0-9])' | sort | uniq)
 if [ "$avail" = "" ]
 then
         echo "UNABLE TO FIND ANY DRIVES ON THIS SYSTEM!!!"
-        exit 1
+        exit 1 
+
+#unmount /var/log.hdd so logic below can find the root partition
+umount /var/log.hdd
+
 fi
 runfrom=$(lsblk | grep /$ | grep -oE '(mmcblk[0-9]|sda[0-9])')
 if [ "$runfrom" = "" ]
